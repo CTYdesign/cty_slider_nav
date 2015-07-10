@@ -1,0 +1,40 @@
+/*
+ * Filename: partials/mixins.scss
+ * Mixins for prefixers and recurring functions
+ * 
+ */
+
+
+@mixin transition($transition...) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+}
+
+@mixin transform($transforms...) {
+	-moz-transform: $transforms;
+	-o-transform: $transforms;
+	-ms-transform: $transforms;
+	-webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin boxShadow($shadow) {
+	-webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}
+
+@mixin bgColor($color) {
+	background-color: $color;
+}
+
+@mixin setHeight {
+	height: 40px;
+	position: relative;
+}
+
+@mixin removePM {
+	padding: 0;
+	margin: 0;
+}

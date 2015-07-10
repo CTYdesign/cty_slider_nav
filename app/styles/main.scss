@@ -1,0 +1,198 @@
+/*
+ * Filename: main.scss
+ *
+ * Author(s): Topher Young
+ *
+ * This file contains the global styles that will be used throughout 
+ * the web application. This file will be included on every page.
+ */
+
+
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/base";
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+
+
+.cty-header {
+  @include setHeight;
+  @include removePM;
+  @include bgColor($dkBlue);
+  overflow: hidden;
+}
+
+.logo-background {
+  @include setHeight;
+  @include bgColor($ltBlue);
+}
+
+.cty-title {
+  @include transition($ctyAnimation);
+  position: relative;
+  font-size: 20px;
+  text-decoration: none;
+  color: $ltYellow;
+  letter-spacing: 2px;
+  top: 7px;
+
+  &:hover {
+    text-decoration: none;
+    color: $yellow;
+  }
+}
+
+
+.welcome {
+  font-family: $ctyFont;
+  font-size: 16px;
+  color: $white;
+  text-transform: none;
+  padding-top: 10px;
+}
+
+.user-name {
+  text-transform: uppercase;
+}
+
+/*=================
+  NAVIGATION
+==================*/
+
+nav {
+  position: absolute;
+  top: 0;
+  right: 53px;
+  display: inline-block;
+  float: right; 
+}
+
+
+nav ul li {
+  @include transition($ctyAnimation);
+  @include setHeight;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-right: -3px;
+
+  &:hover {
+    @include boxShadow(inset 0 -3px 0px $yellow);
+  }
+}
+
+nav ul li a {
+  @include transition($ctyAnimation);
+  font-family: $ctyFont;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: block;
+  text-decoration: none;
+  padding: 12px 15px 22px 15px;
+  color: $white;
+
+  &:hover {
+    text-decoration: none;
+    color: $yellow;
+  }
+}
+
+
+.nav-trigger {
+  @include transition($ctyAnimation);
+  @include bgColor($ltBlue);
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  float: right; 
+  z-index: 99;
+
+  &:hover {
+    @include bgColor($ltBlue);
+  }
+}
+
+
+/* =================
+ * Animated Nav Icon
+ ===================*/
+
+.trigger-top,
+.trigger-middle,
+.trigger-bottom {
+  @include transition($ctyAnimation);
+  @include bgColor($white);
+  position: absolute;
+  top: 19px;
+  left: 15px;
+  height: 3px;
+  width: 20px;
+}
+
+.trigger-top {
+  top: 12px;
+  content: "";
+}
+
+.nav-trigger:hover .trigger-top {
+  top: 11px;
+}
+
+.trigger-bottom {
+  top: 26px;
+  content: "";
+}
+
+.nav-trigger:hover .trigger-bottom {
+  top: 27px;
+}
+
+.trigger-middle.open {
+  background: transparent;
+}
+
+.trigger-top.open {
+  @include transform(rotate3d(0, 0, 1, -45deg));
+  top: 19px;
+}
+
+.nav-trigger:hover .trigger-top.open {
+  top: 19px;
+}
+
+.trigger-bottom.open  {
+  @include transform(rotate3d(0, 0, 1, 45deg));
+  top: 19px;
+}
+
+.nav-trigger:hover .trigger-bottom.open {
+  top: 19px;
+}
+
+
+/* =================
+ * Navigation Animations
+ ===================*/
+
+.ctyNavbar {
+  margin-right: -482px;
+}
+
+.ctyNavbar.show-nav {
+  @include transition(all 0.8s cubic-bezier(0.735, 0.005, 0.430, 0.995));
+  @include transform(translateX(-482px));
+}
+
+.ctyNavbar.hide-nav {
+  @include transition(all 0.8s cubic-bezier(0.735, 0.005, 0.430, 0.995));
+  @include transform(translateX(0px));
+}
